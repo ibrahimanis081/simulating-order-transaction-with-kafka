@@ -1,17 +1,16 @@
 {
     "namespace": "com.order_simulation",
     "type": "record",
-    "name": "OrderDetails",
+    "name": "OrderRecords",
     "fields": [
-        {"name": "userid", "type": "int"},
-        {"name": "orderid", "type": "int"},
-        {"name": "username", "type": "string"},
+        {"name": "userID", "type": "int"},
+        {"name": "transactionID", "type": "int"},
         {"name": "email", "type": "string"},
+        {"name": "totalcost", "type": "int"},
         {"name": "itemsordered", "type": {
             "type": "array",
             "items": "string"
-        }},
-        {"name": "totalcost", "type": "int"}
+        }}
         
     ]
 }

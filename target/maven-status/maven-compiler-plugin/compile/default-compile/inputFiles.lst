@@ -1,4 +1,7 @@
-/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/OrderDetails.java
-/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/App.java
+/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/Analytics.java
+/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/FrontendApp.java
+/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/OrderRecords.java
+/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/AnaApp.java
+/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/StreamsApp.java
+/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/EmailApp.java
 /home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/SampleConsumer.java
-/home/anees/projects/order_simulation_with_kafka/order_simulation/src/main/java/com/order_simulation/BackendApp.java

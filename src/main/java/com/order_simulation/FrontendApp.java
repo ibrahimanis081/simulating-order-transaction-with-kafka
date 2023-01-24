@@ -4,12 +4,14 @@ import java.util.ArrayList;
 import java.util.Properties;
 import java.util.logging.Logger;
 
+
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.IntegerSerializer;
-import org.apache.kafka.common.serialization.StringSerializer;
 
+
+import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
 
 class FrontendApp {
@@ -17,39 +19,40 @@ class FrontendApp {
  
     public static void main(String[] args) throws InterruptedException {
         
-        // create a logger
-        final Logger LOG = Logger.getLogger("BackendApp");
+        
+        final Logger LOG = Logger.getLogger("FrontEndApp");
      
         // set the producer configuration
-        Properties properties = new Properties();
-        properties.put(ProducerConfig.CLIENT_ID_CONFIG, "frontend producer");
-        properties.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
-        properties.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class.getName() );
-        properties.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName() );
-        properties.put("schema.registry.url", "http://0.0.0.0:8081");
+        Properties configs = new Properties();
+        configs.put(ProducerConfig.CLIENT_ID_CONFIG, "frontend producer");
+        configs.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
+        configs.put(ProducerConfig.KEY_SERIALIZER_CLASS_CONFIG, IntegerSerializer.class.getName());
+        configs.put(ProducerConfig.VALUE_SERIALIZER_CLASS_CONFIG, KafkaAvroSerializer.class.getName());
+        configs.put(AbstractKafkaAvroSerDeConfig.AUTO_REGISTER_SCHEMAS, false);
+        configs.put("schema.registry.url", "http://0.0.0.0:8081");
 
         
-        //create a list for items ordered
-        ArrayList <CharSequence> items = new ArrayList<>();
+       
+        
+        ArrayList <String> items = new ArrayList<>();
         items.add("item_1");
         items.add("item_2");
         items.add("item_3");
 
         //create a kafka producer object
-        KafkaProducer<Integer, OrderDetails> producer = new KafkaProducer<>(properties);
+        KafkaProducer<Integer, OrderRecords> producer = new KafkaProducer<>(configs);
 
-        // use a for each loop set the details and to send 100 messages to kafka
-        for (int i = 0; i < 100; i++) {
-            OrderDetails details = new OrderDetails();
-            details.setEmail("user" + i +"@mail.com");
-            details.setItemsordered(items);
-            details.setOrderid(0011 + i);
-            details.setUserid(1000 + i);
-            details.setUsername("user_" + i);
-            details.setTotalcost(100 + i * i);
+        // use a for each loop set the records and to send 100 messages to kafka
+        for (int i = 1; i < 100; i++) {
+            OrderRecords records = new OrderRecords();
+            records.setUserID(i);
+            records.setTransactionID(100_123_32 + i);
+            records.setEmail("user" + i +"@mail.com");
+            records.setItemsordered(items);
+            records.setTotalcost(100 + i * i);
 
             
-            producer.send(new ProducerRecord("order", details.getUserid(), details));
+            producer.send(new ProducerRecord("order", records.getUserID(), records));
             Thread.sleep(900L);
         
             LOG.info("Sending data to kafka");
