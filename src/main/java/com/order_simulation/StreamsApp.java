@@ -45,6 +45,7 @@ public class StreamsApp {
         
         email.peek((key, value) -> System.out.println(("incoming message, key: " + key + ", value: " + value)))
                  .mapValues((key, value) -> value.getEmail())
+                 .peek((key, value) -> System.out.println(("Processed message, value: " + value)))
                  .to("email", Produced.with(Serdes.Integer(), Serdes.String()));
                 
         
