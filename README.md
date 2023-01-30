@@ -5,8 +5,6 @@
 <div align="center">
   
    <h3 align="center">Simulating an Order Transaction With Apache Kafka</h3>
-
-   [![weather-pipeline-Page-1-drawio-2.png](https://i.postimg.cc/hjgX7PNY/weather-pipeline-Page-1-drawio-2.png)](https://postimg.cc/VSGfx1f9)
  
 </div>
 
@@ -20,6 +18,8 @@
 * A Kafka Streams Application to process the order, in this case, read input records from the ```order``` topic, map the email field from each record and write output records to ```email``` topic.
 * A Kafka consumer application to read from the ```email``` topic and simulate sending an email to each record
 * Kafka Connect Sink Connector to sink the records in ```order``` topic to an Amazon S3 bucket.
+
+[![order-simulation-with-kafka.png](https://i.postimg.cc/ydfKdmpg/order-simulation-with-kafka.png)](https://postimg.cc/jwJm37bt)
 
 
 ### Built With
