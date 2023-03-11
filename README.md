@@ -19,8 +19,7 @@
 * A Kafka consumer application to read from the ```email``` topic and simulate sending an email to each record
 * Kafka Connect Sink Connector to sink the records in ```order``` topic to an Amazon S3 bucket.
 
-[![order-simulation-with-kafka.png](https://i.postimg.cc/ydfKdmpg/order-simulation-with-kafka.png)](https://postimg.cc/jwJm37bt)
-
+[![order-simulation-with-kafka.png](https://i.postimg.cc/5Nwh8kX7/order-simulation-with-kafka.png)](https://postimg.cc/crLkShMw)
 
 ### Built With
 <br/>

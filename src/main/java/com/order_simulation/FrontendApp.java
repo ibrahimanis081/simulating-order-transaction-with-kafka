@@ -52,7 +52,7 @@ class FrontendApp {
             records.setTotalcost(100 + i * i);
 
             
-            producer.send(new ProducerRecord("order", records.getUserID(), records));
+            producer.send(new ProducerRecord("order", records.getEmail(), records));
             Thread.sleep(900L);
         
             LOG.info("Sending data to kafka");
